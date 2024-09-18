@@ -16,17 +16,17 @@ export default function AssignmentEditor() {
       <br />
       <table>
         <tr>
-          <td align="right" valign="top">
+          <td>
             <label htmlFor="wd-points">Points</label>
           </td>
           <td>
             <input id="wd-points" value={100} />
           </td>
         </tr>
+        <br />
         <tr>
-          <td align="right" valign="top">
+          <td>
             <label htmlFor="wd-group">Assignment Group</label>
-            <br />
             <select id="wd-assignment-group">
               <option value="ASSIGNMENTS" selected>
                 ASSIGNMENTS
@@ -37,8 +37,9 @@ export default function AssignmentEditor() {
             </select>
           </td>
         </tr>
+        <br />
         <tr>
-          <td align="right" valign="top">
+          <td>
             <label htmlFor="wd-display-grade-as">Display Grade as</label>
             <select id="wd-select-grade-display">
               <option value="Percentage" selected>
@@ -49,6 +50,8 @@ export default function AssignmentEditor() {
             </select>
           </td>
         </tr>
+        <br />
+
         <tr>
           <td align="right" valign="top">
             <label htmlFor="wd-submission-type">Submission Type</label>
@@ -61,65 +64,84 @@ export default function AssignmentEditor() {
               <option value="Online">Online</option>
             </select>
             <br />
-            <label htmlFor="wd-text-entry">Online Entry Options</label>
             <br />
-            <select id="wd-text-entry">
-              <input type="checkbox" name="check-genre" id="wd-text-entry" />
-              <label htmlFor="wd-text-entry">Text Entry</label>
-              <br />
-              <input type="checkbox" name="check-genre" id="wd-website-url" />
-              <label htmlFor="wd-website-url">Website URL</label>
-              <br />
-              <input
-                type="checkbox"
-                name="check-genre"
-                id="wd-media-recordings"
-              />
-              <label htmlFor="wd-media-recordings">Media Recordings</label>
-              <br />
-              <input
-                type="checkbox"
-                name="check-genre"
-                id="wd-student-annotation"
-              />
-              <label htmlFor="wd-student-annotation">Student Annotation</label>
-              <br />
-              <input type="checkbox" name="check-genre" id="wd-file-upload" />
-              <label htmlFor="wd-file-upload">File Upload</label>
-            </select>
+            <label>Online Entry Options</label>
+            <br />
+
+            <input type="checkbox" name="check-genre" id="wd-chkbox-Text" />
+            <label htmlFor="wd-chkbox-comedy">Text Entry</label>
+            <br />
+
+            <input type="checkbox" name="check-genre" id="wd-chkbox-weburl" />
+            <label htmlFor="wd-chkbox-weburl">Website URL</label>
+            <br />
+
+            <input type="checkbox" name="check-genre" id="wd-chkbox-media" />
+            <label htmlFor="wd-chkbox-media">Media Recordings</label>
+            <br />
+
+            <input type="checkbox" name="check-genre" id="wd-chkbox-notes" />
+            <label htmlFor="wd-chkbox-notes">Student Annotation</label>
+            <br />
+
+            <input type="checkbox" name="check-genre" id="wd-chkbox-upload" />
+            <label htmlFor="wd-chkbox-upload">File Uploads</label>
+            <br />
+          </td>
+        </tr>
+        <br />
+        <tr>
+          <td align="right" valign="top">
+            <label htmlFor="wd-assign">Assign</label>
+          </td>
+          <td>
+            <label htmlFor="assign-to">Assign to</label>
+            <input
+              type="text"
+              id="assign-to"
+              name="assign-to"
+              defaultValue="Everyone"
+            />
           </td>
         </tr>
         <tr>
-        <td colSpan={2}>
-          <label htmlFor="assign-to">Assign to</label>
-          <input type="text" id="assign-to" name="assign-to" defaultValue="Everyone" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label htmlFor="due">Due</label>
-        </td>
-        <td>
+          <td>
+            <label htmlFor="due" id="wd-due">Due</label>
+          </td>
+          <br />
+        </tr>
+        <tr>
           <input type="date" id="due" name="due" defaultValue="2024-05-13" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label htmlFor="available-from">Available from</label>
-        </td>
-        <td>
-          <input type="date" id="available-from" name="available-from" defaultValue="2024-05-06" />
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <label htmlFor="until">Until</label>
-        </td>
-        <td>
-          <input type="date" id="until" name="until" defaultValue="2024-05-20" />
-        </td>
-      </tr>
-        
+        </tr>
+        <br />
+
+        <tr>
+          <td colSpan={2}>
+            <label htmlFor="available-from" id="wd-available-from">Available from</label>
+          </td>
+        </tr>
+        <tr>
+          <input
+            type="date"
+            id="available-from"
+            name="available-from"
+            defaultValue="2024-05-06"
+          />
+        </tr>
+        <br />
+        <tr>
+          <td>
+            <label htmlFor="until" id="wd-available-from">Until</label>
+          </td>
+        </tr>
+        <tr>
+          <input
+            type="date"
+            id="until"
+            name="until"
+            defaultValue="2024-05-20"
+          />
+        </tr>
       </table>
     </div>
   );

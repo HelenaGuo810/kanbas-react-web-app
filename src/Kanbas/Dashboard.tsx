@@ -4,99 +4,175 @@ export default function Dashboard() {
     <div id="wd-dashboard">
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
       <h2 id="wd-dashboard-published">Published Courses (12)</h2> <hr />
-      <div id="wd-dashboard-courses">
-        <div className="wd-dashboard-course">
-          <img src="/images/reactjs.jpg" width={200} alt=""/>
-          <div>
-            <Link
-              className="wd-dashboard-course-link"
-              to="/Kanbas/Courses/1234/Home"
-            >
-              CS1234 React JS
-            </Link>
-            <p className="wd-dashboard-course-title">
-              Full Stack software developer
-            </p>
-            <Link to="/Kanbas/Courses/1234/Home"> Go </Link>
-          </div>
-        </div>
-        <div className="wd-dashboard-course">
-          <img src="/images/reactjs.jpg" width={200} alt=""/>
-          <div>
-            <Link
-              className="wd-dashboard-course-link"
-              to="/Kanbas/Course/5001/Home"
-            >
-              CS5001 Introduction to Python
-            </Link>
-            <p className="wd-dashboard-course-title">Python Programming</p>
-            <Link to="/Kanbas/Course/5001"> Go </Link>
-          </div>
-        </div>
-        <div className="wd-dashboard-course">
-          <img src="/images/reactjs.jpg" width={200} alt=""/>
-          <div>
-            <Link
-              className="wd-dashboard-course-link"
-              to="/Kanbas/Course/5002/Home"
-            >
-              CS5002 Discrete Math
-            </Link>
-            <p className="wd-dashboard-course-title">
-              Discrete and Probability statistics
-            </p>
-            <Link to="/Kanbas/Course/5002"> Go </Link>
-          </div>
-        </div>
-        <div className="wd-dashboard-course">
-          <img src="/images/reactjs.jpg" width={200} alt=""/>
-          <div>
-            <Link
-              className="wd-dashboard-course-link"
-              to="/Kanbas/Course/5004/Home"
-            >
-              CS5004 Object-oriented Programming
-            </Link>
-            <p className="wd-dashboard-course-title">
-              Object Oriented Programming
-            </p>
-            <Link to="/Kanbas/Course/5004"> Go </Link>
-          </div>
-          <div className="wd-dashboard-course">
-            <img src="/images/reactjs.jpg" width={200} alt=""/>
-            <div>
+      <div id="wd-dashboard-courses" className="row">
+        <div className="row row-cols-1 row-cols-md-5 g-4">
+          <div className="wd-dashboard-course col" style={{ width: "300px" }}>
+            <div className="card rounded-3 overflow-hidden">
               <Link
-                className="wd-dashboard-course-link"
-                to="/Kanbas/Course/5004/Home"
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1234/Home"
               >
-                CS5008 Data structure and Algorithm
+                <img
+                  src="/images/reactjs.jpg"
+                  width="100%"
+                  height={160}
+                  alt=""
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                    CS1234 React JS
+                  </h5>
+                  <p className="wd-dashboard-course-title card-text">
+                    Full Stack software developer
+                  </p>
+                  <button className="btn btn-primary"> Go </button>
+                </div>
               </Link>
-              <p className="wd-dashboard-course-title">
-                Data structure and algorithm for programming
-              </p>
-              <Link to="/Kanbas/Course/5008"> Go </Link>
             </div>
-            <div className="wd-dashboard-course">
-            <img src="/images/reactjs.jpg" width={200} alt=""/>
-            <div>
-                <Link className="wd-dashboard-course-link" to="/Kanbas/Course/5800/Home">
-                CS5800 Algorithm</Link>
-                <p className="wd-dashboard-course-title">
-                Advanced Algorithm for programming
-                </p>
-                <Link to="/Kanbas/Course/5800"> Go </Link>
+          </div>
+          <div className="wd-dashboard-course col" style={{ width: "300px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1234/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  width="100%"
+                  height={160}
+                  alt=""
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                    CS5001 Introduction to Python
+                  </h5>
+                  <p className="wd-dashboard-course-title card-text">
+                    Python Programming
+                  </p>
+                  <button className="btn btn-primary"> Go </button>
+                </div>
+              </Link>
             </div>
+          </div>
+
+          <div className="wd-dashboard-course col" style={{ width: "300px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1234/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  width="100%"
+                  height={160}
+                  alt=""
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                    CS5002 Discrete Math
+                  </h5>
+                  <p className="wd-dashboard-course-title card-text">
+                    Discrete and Probability statistics
+                  </p>
+                  <button className="btn btn-primary"> Go </button>
+                </div>
+              </Link>
             </div>
-            <div className="wd-dashboard-course">
-            <img src="/images/reactjs.jpg" width={200} alt=""/>
-            <div>
-                <Link className="wd-dashboard-course-link" to="/Kanbas/Course/5340/Home">
-                CS5340 Human-Computer Interaction</Link>
-                <p className="wd-dashboard-course-title">
+          </div>
+          <div className="wd-dashboard-course col" style={{ width: "300px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1234/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  width="100%"
+                  height={160}
+                  alt=""
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                    CS5004 Object-oriented Programming
+                  </h5>
+                  <p className="wd-dashboard-course-title card-text">
+                    Object Oriented Programming
+                  </p>
+                  <button className="btn btn-primary"> Go </button>
+                </div>
+              </Link>
+            </div>
+          </div>
+          <div className="wd-dashboard-course col" style={{ width: "300px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1234/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  width="100%"
+                  height={160}
+                  alt=""
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                    CS5008 Data structure and Algorithm
+                  </h5>
+                  <p className="wd-dashboard-course-title card-text">
+                    Data structure and algorithm for programming
+                  </p>
+                  <button className="btn btn-primary"> Go </button>
+                </div>
+              </Link>
+            </div>
+          </div>
+          <div className="wd-dashboard-course col" style={{ width: "300px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1234/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  width="100%"
+                  height={160}
+                  alt=""
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                    CS5800 Algorithm
+                  </h5>
+                  <p className="wd-dashboard-course-title card-text">
+                    Advanced Algorithm for programming
+                  </p>
+                  <button className="btn btn-primary"> Go </button>
+                </div>
+              </Link>
+            </div>
+          </div>
+          <div className="wd-dashboard-course col" style={{ width: "300px" }}>
+            <div className="card rounded-3 overflow-hidden">
+              <Link
+                className="wd-dashboard-course-link text-decoration-none text-dark"
+                to="/Kanbas/Courses/1234/Home"
+              >
+                <img
+                  src="/images/reactjs.jpg"
+                  width="100%"
+                  height={160}
+                  alt=""
+                />
+                <div className="card-body">
+                  <h5 className="wd-dashboard-course-title card-title">
+                    CS5340 Human-Computer Interaction
+                  </h5>
+                  <p className="wd-dashboard-course-title card-text">
                     Human and Computer Interaction study
-                </p>
-                <Link to="/Kanbas/Course/5340"> Go </Link>
-            </div>
+                  </p>
+                  <button className="btn btn-primary"> Go </button>
+                </div>
+              </Link>
             </div>
           </div>
         </div>

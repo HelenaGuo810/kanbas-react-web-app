@@ -1,0 +1,25 @@
+.border-left-green {
+    width: 5px;
+    height: 100%;
+    background-color: green;
+  }
+  
+  /* Alignment and search bar icon */
+  .search-bar .search-icon {
+    font-size: 1.2em;
+  }
+  
+  .assignment-item {
+    border: 1px solid #ddd;
+    border-left: 5px solid green; /* Green border for each assignment */
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .assignment-item h5 {
+    margin-bottom: 5px;
+  }
+  
+  .assignment-item p {
+    margin-bottom: 0;
+  }

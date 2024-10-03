@@ -1,0 +1,18 @@
+
+.kanbas-link {
+    background-color: black;
+    color: white;
+  }
+  
+
+  .kanbas-link.active {
+    background-color: white;
+    color: red;
+  }
+  
+
+  .kanbas-link:hover {
+    background-color: grey;
+    color: red;
+  }
+  

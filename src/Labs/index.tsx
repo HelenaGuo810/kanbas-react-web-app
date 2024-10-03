@@ -5,7 +5,7 @@ import Lab2 from "./Lab2";
 import Lab3 from "./Lab3";
 export default function Labs() {
   return (
-    <div>
+    <div className="container-fluid">
       <h1>Labs</h1>
       <p>Zhaohe Guo</p>
       <TOC />

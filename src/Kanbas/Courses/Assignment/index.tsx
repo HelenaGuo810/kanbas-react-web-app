@@ -1,18 +1,45 @@
-import { FaCheckCircle, FaPlus, FaSearch } from "react-icons/fa";
-import { SlNote } from "react-icons/sl";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { FaPlus,
+  FaSearch,
+  FaTrash,
+  FaCheckCircle,
+  FaClipboardList, } from "react-icons/fa";
 import { BsGripVertical, BsPlus } from "react-icons/bs";
 import { IoEllipsisVertical } from "react-icons/io5";
-import * as db from "../../Database";
+// import * as db from "../../Database";
 import { useParams } from "react-router";
-
+import { useSelector, useDispatch } from "react-redux";
+import { deleteAssignment } from "./reducer";
 export default function Assignments() {
   const { cid } = useParams();
-  const assignments = db.assignments.filter((assignment) => assignment.course === cid);
+  const { assignments } = useSelector((state: any) => state.assignmentReducer);
+  const { currentUser } = useSelector((state: any) => state.accountReducer);
+  const isFaculty = currentUser?.role === "FACULTY";
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [showDialog, setShowDialog] = useState(false);
+  const [selectedAssignment, setSelectedAssignment] = useState<any>(null);
+  const handleDeleteClick = (assignment: any) => {
+    setSelectedAssignment(assignment);
+    setShowDialog(true);
+  };
+  const confirmDelete = () => {
+    if (selectedAssignment) {
+      dispatch(deleteAssignment(selectedAssignment._id));
+    }
+    setShowDialog(false); 
+    setSelectedAssignment(null); 
+  };
 
+  const cancelDelete = () => {
+    setShowDialog(false);
+    setSelectedAssignment(null);
+  };
   return (
     <div id="wd-assignments" className="text-nowrap">
       <div className="d-flex justify-content-between mb-3">
-        {/* Search Bar */}
+        
         <div className="search-bar d-flex align-items-center">
           <FaSearch className="search-icon" />
           <input
@@ -23,15 +50,31 @@ export default function Assignments() {
           />
         </div>
 
-        {/* Buttons */}
-        <div className="d-flex">
-          <button className="btn btn-outline-danger mx-2">
-            <FaPlus /> Group
-          </button>
-          <button className="btn btn-danger">
-            <FaPlus /> Assignment
-          </button>
-        </div>
+        {isFaculty && (
+          <>
+            <button
+              id="wd-add-assignment"
+              className="btn btn-lg btn-danger me-1 ms-auto"
+              onClick={() => navigate(`/Kanbas/Courses/${cid}/Assignments/new`)}
+            >
+              <FaPlus
+                className="position-relative me-2"
+                style={{ bottom: "1px" }}
+              />
+              Assignment
+            </button>
+            <button
+              id="wd-add-assignment-group"
+              className="btn btn-lg btn-secondary me-1"
+            >
+              <FaPlus
+                className="position-relative me-2"
+                style={{ bottom: "1px" }}
+              />
+              Group
+            </button>
+          </>
+        )}
       </div>
 
       <ul id="wd-assignments" className="list-group rounded-0">
@@ -45,44 +88,92 @@ export default function Assignments() {
               <span className="bg-secondary text-dark px-3 py-1 rounded-pill border border-light me-2">
                 40% of Total
               </span>
-              <BsPlus className="fs-4" />
+              {isFaculty && <BsPlus className="fs-4" />}
               <IoEllipsisVertical className="fs-4" />
             </div>
           </div>
 
           <ul id="wd-assignment-list" className="list-group rounded-0">
-            {assignments.map((assignments: any) => (
-            <li key={assignments._id} className="wd-assignment list-group-item p-3 ps-1 border-gray">
-            <div className="row align-items-center">
-                <div className="col-auto">
-                  <BsGripVertical className="me-2 fs-3" />
-                </div>
-                <div className="col-auto">
-                  <SlNote className="fs-3 text-success me-2" />{" "}
-                </div>
-                  <div className="col">
-                  <a
-                    className="wd-assignment-link text-dark fw-bold fs-5 text-decoration-none"
-                    href={`#/Kanbas/Courses/${cid}/Assignments/${assignments._id}`}
-                  >
-                    {assignments.title}
-                  </a>
-                  <p>
-                    <span className="text-danger">Multiple Modules</span> |
-                    <strong>Not available until</strong> May 6 at 11:00am |
-                    <strong>Due</strong> May 13 at 11:59pm | 100 pts
-                  </p>
+            {assignments
+              .filter((assignment: any) => assignment.course === cid)
+              .map((assignment: any) => (
+                <li
+                  key={assignment._id}
+                  className="wd-assignment-list-item list-group-item p-3 ps-1"
+                >
+                  <div className="row align-items-center">
+                    <div className="col-auto">
+                      <BsGripVertical className="me-2 fs-3" />
+                    </div>
+                    <div className="col-auto">
+                      <FaClipboardList className="fs-3 text-success me-2" />
+                    </div>
+                    <div className="col">
+                      <a
+                        className="wd-assignment-link text-dark fw-bold fs-5 text-decoration-none"
+                        href={`#/Kanbas/Courses/${cid}/Assignments/${assignment._id}`}
+                      >
+                        {assignment.title}
+                      </a>
+                      <p>
+                        <span className="text-danger">Multiple Modules</span> |{" "}
+                        <strong>Not available until</strong>{" "}
+                        {assignment.availableUntil} | <strong>Due</strong>{" "}
+                        {assignment.dueDate} | {assignment.points} pts
+                      </p>
+                    </div>
+                    <div className="col-auto">
+                      <FaCheckCircle className="fs-3 text-success me-2" />
+                      {isFaculty && (
+                        <FaTrash
+                          className="text-danger me-2 mb-1"
+                          onClick={() => handleDeleteClick(assignment)}
+                        />
+                      )}
+                      <IoEllipsisVertical className="fs-4" />
+                    </div>
                   </div>
-                <div className="col-auto">
-                  <FaCheckCircle className="fs-3 text-success me-2" />{" "}
-                  <IoEllipsisVertical className="fs-4" />
-                </div>
-              </div>
-            </li>
-            ))}
-            </ul>
+                </li>
+              ))}
+          </ul>
         </li>
       </ul>
+      {showDialog && (
+        <div className="modal show d-block" tabIndex={-1}>
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title">Confirm Delete</h5>
+                <button
+                  type="button"
+                  className="btn-close"
+                  aria-label="Close"
+                  onClick={cancelDelete}
+                ></button>
+              </div>
+              <div className="modal-body">
+                <p>Are you sure to delete the assignment?</p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={cancelDelete}
+                >
+                  No
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-danger"
+                  onClick={confirmDelete}
+                >
+                  Yes
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

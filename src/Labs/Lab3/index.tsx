@@ -30,11 +30,21 @@ import Styles from "./Styles";
 import Add from "./Add";
 import Square from "./Square";
 import Highlight from "./Highlight";
+import { useSelector } from "react-redux";
 export default function Lab3() {
   console.log('Hello World!');
+  const { todos } = useSelector((state: any) => state.todosReducer);
   return (
     <div id="wd-lab3">
       <h2>Lab 3</h2>
+      <ul className="list-group">
+        {todos.map((todo: any) => (
+          <li className="list-group-item" key={todo.id}>
+            {todo.title}
+          </li>
+        ))}
+      </ul>
+      <hr />
       <h3>JavaScript</h3>
       <VariablesAndConstants />
       <VariableTypes />

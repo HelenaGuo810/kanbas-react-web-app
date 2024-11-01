@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 export default function AccountNavigation() {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const links = currentUser ? ["Profile"] : ["Signin", "Signup"];
+  
   return (
     <div id="wd-account-navigation" className="wd list-group fs-8 rounded-0">
+      {!currentUser && (
+        <>
       <Link
         id="wd-account-signin-link"
         to="/Kanbas/Account/Signin"
@@ -21,6 +23,9 @@ export default function AccountNavigation() {
         Signup
       </Link>
       <br />
+      </>
+      )}
+      {currentUser && (
       <Link
         id="wd-account-profile-link"
         to="/Kanbas/Account/Profile"
@@ -28,6 +33,7 @@ export default function AccountNavigation() {
       >
         Profile
       </Link>
+      )}
       <br />
     </div>
   );

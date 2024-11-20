@@ -16,13 +16,23 @@ export default function Modules() {
   const [moduleName, setModuleName] = useState("");
   const { modules } = useSelector((state: any) => state.modulesReducer);
   const dispatch = useDispatch();
-  const fetchModules = async () => {
-    const modules = await coursesClient.findModulesForCourse(cid as string);
-    dispatch(setModules(modules));
-  };
+  // const fetchModules = async () => {
+  //   const modules = await coursesClient.findModulesForCourse(cid as string);
+  //   dispatch(setModules(modules));
+  // };
+  // useEffect(() => {
+  //   fetchModules();
+  // }, []);
   useEffect(() => {
+    const fetchModules = async () => {
+      // 只在 cid 有值时获取数据
+      if (cid) {
+        const modules = await coursesClient.findModulesForCourse(cid as string);
+        dispatch(setModules(modules));
+      }
+    };
     fetchModules();
-  }, []);
+}, [cid, dispatch]);
   const createModuleForCourse = async () => {
     if (!cid) return;
     const newModule = { name: moduleName, course: cid };

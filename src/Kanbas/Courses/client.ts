@@ -38,12 +38,12 @@ export const createAssignmentForCourse = async (
   );
   return response.data;
 };
-export default {
-    fetchAllCourses,
-    deleteCourse,
-    updateCourse,
-    findModulesForCourse,
-    createModuleForCourse,
-    findAssignmentsForCourse,
-    createAssignmentForCourse,
-    };
+// export default {
+//     fetchAllCourses,
+//     deleteCourse,
+//     updateCourse,
+//     findModulesForCourse,
+//     createModuleForCourse,
+//     findAssignmentsForCourse,
+//     createAssignmentForCourse,
+//     };

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import * as client from "./client";
 
 export default function HttpClient() {

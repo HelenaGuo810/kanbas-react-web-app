@@ -45,11 +45,22 @@ export default function TOC() {
       </li>
     
       <li className="nav-item">
-        <a id="wd-k" href="https://github.com/jannunzi" className="nav-link">
+        <a id="wd-k" href="https://github.com/HelenaGuo810" className="nav-link">
           My GitHub
         </a>
       </li>
       
+      <li className="nav-item">
+        <a id="wd-k" href="https://github.com/HelenaGuo810/kanbas-node-server-app" className="nav-link">
+          New Github Repository
+        </a>
+      </li>
+
+      <li className="nav-item">
+        <a id="wd-k" href="https://kanbas-node-server-app-helena-df95e0749364.herokuapp.com/" className="nav-link">
+          Heroku
+        </a>
+      </li>
     </ul>
     );
   }

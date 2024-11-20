@@ -4,7 +4,7 @@ import Account from "./Account";
 import Courses from "./Courses";
 import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
-import store from "./store";
+// import store from "./store";
 import { Provider, useSelector } from "react-redux";
 import "./styles.css";
 import ProtectedRoute from "./Account/ProtectedRoute";

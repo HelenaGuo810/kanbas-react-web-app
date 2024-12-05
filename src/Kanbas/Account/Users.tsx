@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
+import { FaPlus } from "react-icons/fa";
 import { useParams } from "react-router";
 import PeopleTable from "../Courses/People/Table";
 import * as client from "./client";
 export default function Users() {
  const [users, setUsers] = useState<any[]>([]);
  const [role, setRole] = useState("");
+ const [, setName] = useState("");
  const createUser = async () => {
   const user = await client.createUser({
     firstName: "New",
@@ -27,7 +29,6 @@ export default function Users() {
       fetchUsers();
     }
   };
-  const [name, setName] = useState("");
   const filterUsersByName = async (name: string) => {
     setName(name);
     if (name) {
@@ -48,7 +49,11 @@ export default function Users() {
  }, [uid]);
  return (
    <div>
-     <h3>Users</h3>
+     <button onClick={createUser} className="float-end btn btn-danger wd-add-people">
+        <FaPlus className="me-2" />
+        Users
+      </button>
+      <h3>Users</h3>
      <input onChange={(e) => filterUsersByName(e.target.value)} placeholder="Search people"
              className="form-control float-start w-25 me-2 wd-filter-by-name" />
      <select value={role} onChange={(e) =>filterUsersByRole(e.target.value)}

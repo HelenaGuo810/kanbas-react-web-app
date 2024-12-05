@@ -3,8 +3,12 @@ import { IoCalendarOutline } from "react-icons/io5";
 import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
+// import { useSelector } from "react-redux";
 import "./Navigation.css";
 export default function KanbasNavigation() {
+  // const { currentUser } = useSelector((state: any) => state.accountReducer);
+//  const links = currentUser ? ["Profile"] : ["Signin", "Signup"];
+//  const active = (path: string) => (pathname.includes(path) ? "active" : "");
   const { pathname } = useLocation();
   const links = [
     { label: "Dashboard", path: "/Kanbas/Dashboard", icon: AiOutlineDashboard },
@@ -62,6 +66,8 @@ export default function KanbasNavigation() {
           {link.label}
         </Link>
       ))}
+      
+
     </div>
   );
 }

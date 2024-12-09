@@ -2,6 +2,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
+import * as coursesClient from "../client";
+import * as assignmentsClient from "./client";
 import { addAssignment, updateAssignment } from "./reducer";
 import { CiCalendar } from 'react-icons/ci';
 export default function AssignmentEditor() {
@@ -23,16 +25,34 @@ export default function AssignmentEditor() {
       course: cid,
     }
   );
-  const handleSave = () => {
+  const createAssignment = async (assignment: any) => {
+    const newAssignment = await coursesClient.createAssignmentForCourse(
+      cid as string,
+      assignment
+    );
+    dispatch(addAssignment(newAssignment));
+  };
+  const saveAssignment = async (assignment: any) => {
+    await assignmentsClient.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  };
+  const handleSave = async () => {
+    // if (existingAssignment) {
+    //   dispatch(updateAssignment(assignment));
+    // } else {
+    //   dispatch(
+    //     addAssignment({ ...assignment, _id: new Date().getTime().toString() })
+    //   );
+    // }
     if (existingAssignment) {
-      dispatch(updateAssignment(assignment));
+      await saveAssignment(assignment);
     } else {
-      dispatch(
-        addAssignment({ ...assignment, _id: new Date().getTime().toString() })
-      );
+      await createAssignment(assignment);
     }
     navigate(`/Kanbas/Courses/${cid}/Assignments`);
   };
+  //   navigate(`/Kanbas/Courses/${cid}/Assignments`);
+  // };
   return (
     
     <div id="wd-assignments-editor" className="me-4">
